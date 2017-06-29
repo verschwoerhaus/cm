@@ -1,9 +1,9 @@
 ---
 # Event config
 event:
-  acronym: XYZ
-  name: Some Name
-  slogan: Some Slogan
+  acronym: VSH
+  name: verschwoerhaus
+  slogan: Das Experimentierfeld für die Welt von morgen
   formats:
     hd: 'yes'
     sd: 'yes'
@@ -28,9 +28,9 @@ monitoring:
 tracker_url: "https://tracker.c3voc.de/rpc"
 
 mqtt:
-  server: "{{ lookup('keepass', 'ansible/mqtt.url') }}"
-  username: "{{ lookup('keepass', 'ansible/mqtt.username') }}"
-  password: "{{ lookup('keepass', 'ansible/mqtt.password') }}"
+  server: "localhost" #"{{ lookup('keepass', 'ansible/mqtt.url') }}"
+  username: "x" #"{{ lookup('keepass', 'ansible/mqtt.username') }}"
+  password: "x" #"{{ lookup('keepass', 'ansible/mqtt.password') }}"
 
 trusted_ipv4_ips: {
   'allow all TODO: remove me': '0.0.0.0/0',
@@ -127,30 +127,9 @@ nginx_ips_allow_stats: [
 ]
 
 users:
-  - { name: 'andi', state: 'present' }
-  - { name: 'anton', state: 'present' }
-  - { name: 'atze', state: 'present' }
-  - { name: 'bjoern', state: 'present' }
-  - { name: 'coeins', state: 'present' }
-  - { name: 'derpeter', state: 'present' }
-  - { name: 'danimo', state: 'present' }
-  - { name: 'florob', state: 'present' }
-  - { name: 'florolf', state: 'present' }
-  - { name: 'fxkr', state: 'present' }
-  - { name: 'ike', state: 'present' }
-  - { name: 'jwacalex', state: 'present' }
-  - { name: 'masterbase', state: 'present' }
-  - { name: 'mazdermind', state: 'present' }
-  - { name: 'meise', state: 'present' }
-  - { name: 'thomic', state: 'present' }
-  - { name: 'v0tti', state: 'present' }
-  - { name: 'felixs', state: 'present' } # selfnet, foss4g
-  - { name: 'nihilus', state: 'present' } # nobody
-  - { name: 'lukas2511', state: 'present' } # lets encrypt sh mensch
-  - { name: 'dedeibel', state: 'present' }
-  - { name: 'pegro', state: 'present' }
-  - { name: 'bix', state: 'present' }  # SHA
-  - { name: 'dave', state: 'present' } # SHA
+  #- { name: 'andi', state: 'present' }
+  - { name: 'robbi5', github: 'robbi5', state: 'present' }
+  - { name: 'stk', github: 'stkdiretto', state: 'present' }
   - { name: 'voc', state: 'present' }
 
 additional_users: []

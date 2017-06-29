@@ -50,7 +50,7 @@ PermitEmptyPasswords no
 ChallengeResponseAuthentication no
 
 # Change to no to disable tunnelled clear text passwords
-PasswordAuthentication no
+PasswordAuthentication yes
 
 # Kerberos options
 #KerberosAuthentication no
@@ -100,6 +100,6 @@ Match user check-mk
   AuthorizedKeysFile /usr/lib/check_mk_agent/.ssh/authorized_keys
 
 {% if ssh_allow_voc_password_login is defined and ssh_allow_voc_password_login == 'yes' %}
-Match Address 10.73.0.0/16
-  PasswordAuthentication yes
+#Match Address 192.168.9.0/16
+#  PasswordAuthentication yes
 {% endif %}

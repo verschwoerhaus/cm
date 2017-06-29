@@ -54,17 +54,17 @@
     when: item.state != 'absent'
 
   - name: add user's authorized_keys
-    authorized_key: user="{{ item.name }}" manage_dir=true key="{{ lookup('keepass', 'ansible/authorized_keys/' + item.name + '.notes') }}"
+    authorized_key: user="{{ item.name }}" manage_dir=true key="https://github.com/{{ item.github }}.keys"
                     state=present exclusive=yes
     with_items: 
       - "{{ users }}"
       - "{{ additional_users }}"
-    when: item.state != 'absent' and item.name != 'voc'
+    when: item.state != 'absent' and item.name != 'voc' and item.github != ''
 
   - name: add user's authorized_keys to voc
-    authorized_key: user="voc" manage_dir=true key="{{ lookup('keepass', 'ansible/authorized_keys/' + item.name + '.notes') }}"
+    authorized_key: user="voc" manage_dir=true key="https://github.com/{{ item.github }}.keys"
                     state=present
     with_items:
       - "{{ users }}"
       - "{{ additional_users }}"
-    when: item.state != 'absent' and item.name != 'voc'
+    when: item.state != 'absent' and item.name != 'voc' and item.github != ''

@@ -21,6 +21,8 @@ iptables -A INPUT -s 10.8.0.0/16 -j ACCEPT -m comment --comment "voc vpn subnet"
 
 # allow ssh
 iptables -A INPUT -p tcp --sport 1024:65535 --dport 22 -j ACCEPT
+# allow rtmp push
+iptables -A INPUT -p tcp --dport 1935 -j ACCEPT
 # allow dns
 iptables -A INPUT -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
 # reject rest
