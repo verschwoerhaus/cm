@@ -5,7 +5,7 @@
 #  call `arecord -L` for correct device name
 
 gst-launch-1.0 \
-  v4l2src device=/dev/video1 !\
+  v4l2src device=/dev/video0 !\
     videoconvert ! \
     videorate ! \
     video/x-raw,format=I420,framerate=25/1,width=1920,height=1080 ! \
