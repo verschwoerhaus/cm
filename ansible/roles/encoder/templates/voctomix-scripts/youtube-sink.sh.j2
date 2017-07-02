@@ -5,9 +5,8 @@ ffmpeg -y -nostdin \
   -aspect 16:9 \
   -c:v libx264 \
   -filter_complex '
-    [0:v] yadif=mode=2, hqdn3d [deinter];
     movie=/opt/voc/share/overlay_hd.png [logo];
-    [deinter] [logo] overlay=0:0 [v];
+    [0:v] [logo] overlay=0:0 [v];
 
     [0:a:0] volume=12dB, pan=mono|c0=FL [native]
   ' \
@@ -20,3 +19,8 @@ ffmpeg -y -nostdin \
   -ac 1 -c:a libfdk_aac -b:a 96k -ar 44100 \
   \
   -y -f flv rtmp://a.rtmp.youtube.com/live2/{{ youtube_rtmp_key }}
+
+
+#    [0:v] yadif=mode=2, hqdn3d [deinter];
+#    movie=/opt/voc/share/overlay_hd.png [logo];
+#    [deinter] [logo] overlay=0:0 [v];
