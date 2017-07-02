@@ -300,6 +300,19 @@
               dest="/opt/voctomix/scripts/streaming-sink-mkvonly.sh"
               mode=0755 owner=root group=root
 
+  - name: create youtube streaming script
+    template: src="voctomix-scripts/youtube-sink.sh.j2"
+              dest="/opt/voctomix/scripts/youtube-sink.sh"
+              mode=0755 owner=root group=root
+
+  - name: create youtube systemd-unit
+    template: src="systemd-units/youtube-sink.service.j2"
+              dest="/etc/systemd/system/youtube-sink.service"
+              mode=0644 owner=root group=root
+
+  - name: disable youtube streaming services
+    service: name=youtube-sink.service
+             enabled=no
 
 
   - name: create framebuffer playout systemd-unit

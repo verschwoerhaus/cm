@@ -24,3 +24,5 @@ voctomix_sources:
     name: grabber
     type: rtmp
     target: push/hdmi
+
+youtube_rtmp_key: test-test-test-test
