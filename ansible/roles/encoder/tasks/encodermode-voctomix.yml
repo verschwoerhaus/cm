@@ -234,8 +234,23 @@
 
   - name: enable bgloop service
     service: name=bgloop.service
-             enabled=yes
+             enabled=no
 
+
+    # bgimage source
+  - name: create bgimage script
+    template: src="voctomix-scripts/bgimage-source.sh.j2"
+              dest="/opt/voctomix/scripts/bgimage-source.sh"
+              mode=0755 owner=root group=root
+
+  - name: create bgimage systemd-unit
+    template: src="systemd-units/bgimage-source.service.j2"
+              dest="/etc/systemd/system/bgimage.service"
+              mode=0644 owner=root group=root
+
+  - name: enable bgimage service
+    service: name=bgimage.service
+             enabled=yes
 
 
     # recording sink
