@@ -2,9 +2,9 @@
   - hosts: mixers
     roles:
       - { role: common, tags: ['common'] }
-      - { role: monitoring-client, tags: ['monitoring'] }
+      #- { role: monitoring-client, tags: ['monitoring'] }
       - { role: mixer, tags: ['mixer'] }
       - { role: crs-worker, tags: ['crsworker'], when: crs_token is defined and crs_secret is defined }
     vars:
       ssh_allow_voc_password_login: 'yes'
-      mixer_user_password: "{{ lookup('keepass', 'ansible/logins/mixer.password') }}"
+      mixer_user_password: "$6$jd6fnHjmd41i/8i3$xLS/YiudXY2e03R.cNKrTu7H31MoclSqfaDUxCZ/JrTdzDjaYZh2XXKjWQ1nIC54nek4ItPRinLGqnlLUeyc1."

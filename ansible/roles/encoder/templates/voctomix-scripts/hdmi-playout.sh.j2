@@ -1,0 +1,16 @@
+#!/bin/sh
+fbset -g 1920 1080 1920 1080 32
+echo 0 >/sys/class/graphics/fbcon/cursor_blink
+
+ffmpeg \
+        -i tcp://localhost:15000 \
+        -filter_complex '
+                [0:v] yadif=mode=2, hqdn3d [deinter];
+                movie=/opt/voc/share/overlay_hd.png [logo];
+                [deinter] [logo] overlay=0:0 [v]
+        ' \
+        -map '[v]' \
+        -maxrate:v:0 3000k -crf:0 21 \
+        -c:v rawvideo \
+        -pix_fmt bgra \
+        -f fbdev /dev/fb0
