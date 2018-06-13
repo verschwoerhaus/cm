@@ -2,6 +2,9 @@ c3voc - configuration management
 ================================
 
 ** VSH EDITS **
+This configuration was used for the 34. Chaos Communication Congress in the WikiPaka WG. The resulting recordings are available at https://media.ccc.de/c/34c3-wikipakawg
+
+Our edits are mostly for our single room with one camera and removal of the keepass stuff.
 
 # Installation
 
