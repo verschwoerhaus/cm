@@ -244,11 +244,11 @@
     tags:
       - check_recording
 
-  - file: src=/usr/local/sbin/check_system.sh
-        dest=/opt/voctomix/scripts/check_recording.sh
-        state=link
-    tags:
-      - check_recording
+  #- file: src=/usr/local/sbin/check_system.sh
+  #      dest=/opt/voctomix/scripts/check_recording.sh
+  #      state=link
+  #  tags:
+  #    - check_recording
 
   # legacy - check_system is per default deployed on all systems
   # via common role
@@ -324,6 +324,20 @@
              enabled=false
     with_items: [program, stream]
 
+    # youtube sink
+  - name: create youtube script
+    template: src="voctomix-scripts/youtube-sink.sh.j2"
+              dest="/opt/voctomix/scripts/youtube-sink.sh"
+              mode=0750 owner=root group=root
+
+  - name: create youtube systemd-unit
+    template: src="systemd-units/youtube-sink.service.j2"
+              dest="/etc/systemd/system/youtube-sink.service"
+              mode=0644 owner=root group=root
+
+  - name: enable youtube service
+    service: name=youtube-sink.service
+             enabled=yes
 
 
   # decklink playouts

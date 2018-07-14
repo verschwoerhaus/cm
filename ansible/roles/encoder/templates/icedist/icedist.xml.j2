@@ -19,11 +19,11 @@
     </limits>
 
     <authentication>
-        <source-password>{{ lookup('keepass', 'ansible/icecast/icedist/source.password') }}</source-password>
-        <relay-password>{{ lookup('keepass', 'ansible/icecast/icedist/relay.password') }}</relay-password>
+        <source-password>source</source-password>
+        <relay-password>relay</relay-password>
 
-        <admin-user>{{ lookup('keepass', 'ansible/icecast/icedist/admin.username') }}</admin-user>
-        <admin-password>{{ lookup('keepass', 'ansible/icecast/icedist/admin.password') }}</admin-password>
+        <admin-user>admin</admin-user>
+        <admin-password>admin</admin-password>
     </authentication>
 
     <listen-socket>

@@ -1,9 +1,9 @@
 ---
 # Event config
 event:
-  acronym: XXX
-  name: XXX
-  slogan: XXX
+  acronym: VSH
+  name: verschwoerhaus
+  slogan: Das Experimentierfeld für die Welt von morgen
   formats:
     hd: 'yes'
     sd: 'yes'
@@ -19,13 +19,14 @@ voctomix:
   # or artwork/{{ event.acronym }}/saal{{ room_number }}/bg.png
   # and set the next variable to true
   static_background_image: true
-  music: true
+  music: false
   nostream_loop: false
 
 # only enable for congress
-#youtube: true
+youtube: true
+youtube_stream_key: "FIXME"
 
-user_voc_password: "{{ lookup('keepass', 'ansible/logins/voc.password') }}"
+user_voc_password: "$6$heQbAHmrE9Ejsuu1$PXk1WTme/Wc3b32EYrE7mZX9j2cIpm66ieuiFHqhm2SQ/JqJEfuZvL5YEDqcgAms3szFl/xpsS05Ymmds01OO."
 
 system:
   type: pc
@@ -38,22 +39,23 @@ system:
 use_lan_dns: true
 
 monitoring:
-  collectd_server:
-    - "{{ lookup('keepass', 'ansible/collectd.url') }}"
-  collectd_username: "{{ lookup('keepass', 'ansible/collectd.username') }}"
-  collectd_password: "{{ lookup('keepass', 'ansible/collectd.password') }}"
-  collectd_interval: 30
+  #collectd_server:
+  #  - "{{ lookup('keepass', 'ansible/collectd.url') }}"
+  #collectd_username: "{{ lookup('keepass', 'ansible/collectd.username') }}"
+  #collectd_password: "{{ lookup('keepass', 'ansible/collectd.password') }}"
+  #collectd_interval: 30
 
 tracker_url: "https://tracker.c3voc.de/rpc"
 
 mqtt:
-  server: "{{ lookup('keepass', 'ansible/mqtt.url') }}"
-  username: "{{ lookup('keepass', 'ansible/mqtt.username') }}"
-  password: "{{ lookup('keepass', 'ansible/mqtt.password') }}"
+  server: "localhost"
+  username: ""
+  password: ""
 
 trusted_ipv4_ips: {
   # 'allow all TODO: remove me': '0.0.0.0/0',
   'voc internal #3500': '10.73.0.0/16',
+  'vsh internal': '192.168.8.0/22',
   'voc vpn': '10.8.0.0/16',
   'voc public #2241':   '94.45.241.0/24',
   'voc berlin':   '195.54.164.160/29',
@@ -116,41 +118,43 @@ nginx_ips_allow_stats: [
 ]
 
 users:
-  - { name: 'andi', state: 'present' }
-  - { name: 'anton', state: 'present' }
-  - { name: 'atze', state: 'present' }
-  - { name: 'bjoern', state: 'present' }
-  - { name: 'coeins', state: 'present' }
-  - { name: 'derpeter', state: 'present' }
-  - { name: 'danimo', state: 'present' }
-  - { name: 'florob', state: 'present' }
-  - { name: 'florolf', state: 'present' }
-  - { name: 'fxkr', state: 'present' }
-  - { name: 'ike', state: 'present' }
-  - { name: 'jwacalex', state: 'present' }
-  - { name: 'lhampe', state: 'present' }
-  - { name: 'masterbase', state: 'present' }
-  - { name: 'mazdermind', state: 'present' }
-  - { name: 'meise', state: 'present' }
-  - { name: 'thomic', state: 'present' }
-  - { name: 'v0tti', state: 'present' }
-  - { name: 'felixs', state: 'present' } # selfnet, foss4g
-  - { name: 'nihilus', state: 'present' } # nobody
-  - { name: 'lukas2511', state: 'present' } # lets encrypt sh mensch
-  - { name: 'dedeibel', state: 'present' }
-  - { name: 'pegro', state: 'present' }
-  - { name: 'bix', state: 'present' }  # SHA
-  - { name: 'dave', state: 'present' } # SHA
-  - { name: 'arl4223', state: 'absent' } # NOC
-  - { name: 'holger', state: 'absent' } # Debian
-  - { name: 'zuntrax', state: 'present' } # SHA
-  - { name: 'jayjay', state: 'present' } 
-  - { name: 'cardno', state: 'absent' } # cristoph fcmc
-  - { name: 'derchris', state: 'present' }
+  - { name: 'andi', github: 'saerdnaer', state: 'present' }
+  #- { name: 'anton', state: 'present' }
+  #- { name: 'atze', state: 'present' }
+  #- { name: 'bjoern', state: 'present' }
+  #- { name: 'coeins', state: 'present' }
+  #- { name: 'derpeter', state: 'present' }
+  #- { name: 'danimo', state: 'present' }
+  #- { name: 'florob', state: 'present' }
+  #- { name: 'florolf', state: 'present' }
+  #- { name: 'fxkr', state: 'present' }
+  #- { name: 'ike', state: 'present' }
+  #- { name: 'jwacalex', state: 'present' }
+  #- { name: 'lhampe', state: 'present' }
+  #- { name: 'masterbase', state: 'present' }
+  #- { name: 'mazdermind', state: 'present' }
+  #- { name: 'meise', state: 'present' }
+  #- { name: 'thomic', state: 'present' }
+  #- { name: 'v0tti', state: 'present' }
+  #- { name: 'felixs', state: 'present' } # selfnet, foss4g
+  #- { name: 'nihilus', state: 'present' } # nobody
+  #- { name: 'lukas2511', state: 'present' } # lets encrypt sh mensch
+  #- { name: 'dedeibel', state: 'present' }
+  #- { name: 'pegro', state: 'present' }
+  #- { name: 'bix', state: 'present' }  # SHA
+  #- { name: 'dave', state: 'present' } # SHA
+  #- { name: 'arl4223', state: 'absent' } # NOC
+  #- { name: 'holger', state: 'absent' } # Debian
+  #- { name: 'zuntrax', state: 'present' } # SHA
+  #- { name: 'jayjay', state: 'present' } 
+  #- { name: 'cardno', state: 'absent' } # cristoph fcmc
+  #- { name: 'derchris', state: 'present' }
+  - { name: 'robbi5', github: 'robbi5', state: 'present' }
+  - { name: 'stk', github: 'stkdiretto', state: 'present' }
   - { name: 'voc', state: 'present' }
 
 additional_users: []
 
-distribution_mode: icedist
+distribution_mode: ""
 
 webroot_path: "/var/www"

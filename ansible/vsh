@@ -1,0 +1,11 @@
+# Hosts file
+
+[saal-vsh]
+192.168.9.36
+192.168.9.35
+
+[encoders]
+192.168.9.36 crs_token="FIXME" crs_secret="FIXME" crs_token_meta="FIXME" crs_secret_meta="FIXME"
+
+[mixers]
+192.168.9.35

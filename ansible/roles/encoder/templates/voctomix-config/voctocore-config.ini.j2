@@ -20,7 +20,9 @@ video_connection={{ source.video_connection | default('SDI') | upper }}
 video_mode={{ source.video_mode }}
 audio_connection=embedded
 
+{% if voctomix_audio_source is not defined %}
 volume={{ source.volume | default('0.0') }}
+{% endif %}
 
 {% if source.deinterlace is defined %}
 deinterlace={{ source.deinterlace }}

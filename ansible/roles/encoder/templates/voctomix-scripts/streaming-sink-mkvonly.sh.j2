@@ -39,7 +39,7 @@ ffmpeg -y -nostdin -hide_banner \
 	-map 0:a \
 	\
 	-f matroska \
-	-password {{ lookup('keepass', 'ansible/icecast/icedist/source.password') }} \
+	-password "source" \
 	-content_type video/webm \
 {% if streaming_endpoint_pulling %}
 	icecast://127.0.0.1:7999/{{ streaming_endpoint }}
