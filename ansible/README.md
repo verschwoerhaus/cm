@@ -28,7 +28,7 @@ Syntax validation.
 Basic `ansible` call to deploy new config to a specific host.
 
 ```
-  ansible-playbook --ask-pass --ask-become-pass -u voc --become --become-method=su -i vsh -l 192.168.9.36 site.yml
+  ansible-playbook --ask-pass --ask-become-pass -u voc --become --become-method=su -i vsh -l 10.73.1.3 site.yml
 ```
 
 Basic `ansible` call to deploy new config to a set of hosts on an event.
